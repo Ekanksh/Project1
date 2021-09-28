@@ -1,0 +1,33 @@
+.btn1{
+    border-radius: 5px;
+    padding: 0px 18px;
+    font-size: 12px;
+    }
+
+.mat-raised-button{
+line-height: 17px;
+}
+
+.custom {
+  width: 78px !important;
+  text-align: start;
+ 
+  font-size: 11px;
+}
+
+.btn1{
+  background-color: #ffce09;
+}
+.btn2{
+  background-color: chocolate;
+}
+.btn3{
+  background-color: mediumpurple;
+}
+.btn4{
+  background-color: rgb(94, 214, 146);
+}   
+.btn5{
+  background-color: steelblue;
+}
+

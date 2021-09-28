@@ -1,0 +1,96 @@
+<body>
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon" (click)="sidenav.toggle();">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Vendor Management</h1>
+    <span class="spacer" >{{Name}}
+      <i  class="fas fa-user-cog "> </i>
+    </span>
+
+  </mat-toolbar>
+
+
+
+  <mat-sidenav-container style="height: 100%;">
+    <mat-sidenav #sidenav opened="true" mode="side"
+      style="background-color: #ffce09;; border-radius: 15px 50px 30px 5px;">
+      <mat-nav-list style="width: 200px; ">
+        <div class="sidemenu">
+          <div class="col-md-12 scrolloff" >
+            <button type="button " routerLinkActive="active"  routerLink="/invoice" 
+              class="btn mb-2 mb-md-0 btn-quarternary btn-block btn-round"><span>Invoice</span>
+              <div class="icon icon-round d-flex align-items-center justify-content-center" >
+                <i class="fas fa-file-invoice"></i>
+              </div>
+            </button>
+          </div>
+
+          <div class="col-md-12 scrolloff">
+            <button type="button" routerLinkActive="active" routerLink="/SubContractor" 
+              class="btn mb-2 mb-md-0 btn-quarternary btn-block btn-round"><span>SubContractor List</span>
+              <div class="icon icon-round d-flex align-items-center justify-content-center">
+                <i class="fas fa-file-invoice"></i>
+              </div>
+            </button>
+          </div>
+          <div class="col-md-12 scrolloff">
+            <button type="button" routerLinkActive="active" routerLink="/Support" 
+              class="btn mb-2 mb-md-0 btn-quarternary btn-block btn-round"><span>Support</span>
+              <div class="icon icon-round d-flex align-items-center justify-content-center">
+                <i class="fas fa-file-invoice"></i>
+              </div>
+            </button>
+          </div>
+
+        </div>
+        <div class="col-md-12 scroll">
+          <button type="button" (click)="auth.logOut()"
+            class="btn mb-2 mb-md-0 btn-quarternary btn-block btn-round"><span>LogOut</span>
+            <div class="icon icon-round d-flex align-items-center justify-content-center">
+              <i class="fas fa-file-invoice"></i>
+            </div>
+          </button>
+        </div>
+      </mat-nav-list>
+
+
+
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+      <table class="table table-striped designed" style="width: 95%;">
+        <thead>
+
+          <th>SubContractor</th>
+
+          <tr style="background-color: #ff8c007a;">
+            <th scope="col">Staff ID</th>
+            <th scope="col">SubContractor Name</th>
+            <th scope="col">Geography</th>
+            <th scope="col">Location</th>
+            <th scope="col">View</th>
+
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr *ngFor="let a of AllData ">
+            <td>{{a.Invoice_number}}</td>
+            <td>{{a.Contractor_Name}}</td>
+            <td>India</td>
+            <td>{{a.Location}}</td>
+            <a routerLink="/SubContractor/SubContractor-deatils/{{a.Invoice_number}}"   >
+              <td><i class="fas fa-clipboard-list"></i></td>
+            </a>
+
+          </tr>
+          
+
+        </tbody>
+      </table>
+ 
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</body>

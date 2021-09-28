@@ -1,0 +1,127 @@
+<body>
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon" (click)="sidenav.toggle();">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Vendor Management</h1>
+    <span class="spacer" >{{Name}}
+    <i  class="fas fa-user-cog "> </i>
+  </span>
+     
+      
+
+  </mat-toolbar>
+
+
+
+  <mat-sidenav-container style="height: 100%;">
+    <mat-sidenav #sidenav opened="true" mode="side"
+      style="background-color: #ffce09;; border-radius: 15px 50px 30px 5px;">
+      <mat-nav-list style="width: 200px; ">
+        <div class="sidemenu">
+          <div class="col-md-12 scrolloff" >
+            <button type="button " routerLinkActive="active" routerLink="/invoice" 
+              class="btn mb-2 mb-md-0 btn-quarternary btn-block btn-round"><span>Invoice</span>
+              <div class="icon icon-round d-flex align-items-center justify-content-center">
+                <i class="fas fa-file-invoice"></i>
+              </div>
+            </button>
+          </div>
+
+          <div class="col-md-12 scrolloff">
+            <button type="button" routerLinkActive="active" routerLink="/SubContractor" 
+              class="btn mb-2 mb-md-0 btn-quarternary btn-block btn-round"><span>SubContractor List</span>
+              <div class="icon icon-round d-flex align-items-center justify-content-center">
+                <i class="fas fa-file-invoice"></i>
+              </div>
+            </button>
+          </div>
+          <div class="col-md-12 scrolloff">
+            <button type="button" routerLinkActive="active" routerLink="/Support" 
+              class="btn mb-2 mb-md-0 btn-quarternary btn-block btn-round"><span>Support</span>
+              <div class="icon icon-round d-flex align-items-center justify-content-center">
+                <i class="fas fa-file-invoice"></i>
+              </div>
+            </button>
+          </div>
+
+        </div>
+        <div class="col-md-12 scroll">
+          <button type="button"  (click)="auth.logOut()"
+            class="btn mb-2 mb-md-0 btn-quarternary btn-block btn-round"><span>LogOut</span>
+            <div class="icon icon-round d-flex align-items-center justify-content-center">
+              <i class="fas fa-file-invoice"></i>
+            </div>
+          </button>
+        </div>
+      </mat-nav-list>
+
+
+
+
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+      <table class="table table-striped designed" style="width: 95%;">
+        <thead>
+
+          <th>Invoice List</th>
+
+          <tr style="background-color: #ff8c007a;">
+            <th scope="col">invoice Number</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">SubContractor Name</th>
+            <th scope="col">Status</th>
+            
+            <th scope="col">DownLoad PDF</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr *ngFor="let a of AllData ">
+            <td>{{a.Invoice_number}}</td>
+            <td>{{a.Start_Date | date}}</td>
+            <td>{{a.End_Date | date}}</td>
+            <td>{{a.Contractor_Name}}</td>
+            <td >
+              <div class="example-button-row" *ngIf="a.status=='Ready'">
+                <button routerLink="/invoice/InvoiceDetailsReadyComponent/{{a.Invoice_number}}"  (click)="OnReady(a.Invoice_number)" mat-raised-button class="custom btn1">{{a.status}}</button>
+              </div>
+
+              <div class="example-button-row" *ngIf="a.status=='Inaccural'" >
+                <button  routerLink="/invoice/InvoiceDetailInAccrualComponent/{{a.Invoice_number}}"  mat-raised-button class="custom btn3">{{a.status}}</button>
+              </div>
+
+              <div class="example-button-row" *ngIf="a.status=='Paid'" >
+                <button  routerLink="/invoice/InvoiceDetailsPaidComponent/{{a.Invoice_number}}"  mat-raised-button class="custom btn4">{{a.status}}</button>
+              </div>
+
+              <div class="example-button-row" *ngIf="a.status=='Disputed'" >
+                <button  routerLink="/invoice/InvoiceDetailsDisputedComponent/{{a.Invoice_number}}"  mat-raised-button class="custom btn2">{{a.status}}</button>
+              </div>
+
+              <div class="example-button-row" *ngIf="a.status=='Raised'" >
+                <button  routerLink="/invoice/InvoiceDetailsRaisedComponent/{{a.Invoice_number}}"  mat-raised-button class="custom btn5">{{a.status}}</button>
+              </div>
+            </td>
+           
+           
+          
+            <td><i class="fas fa-download"></i></td>
+          </tr>
+         
+
+
+        </tbody>
+      </table>
+
+
+      
+     
+ 
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</body>

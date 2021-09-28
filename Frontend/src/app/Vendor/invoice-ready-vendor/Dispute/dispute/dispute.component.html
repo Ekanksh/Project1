@@ -1,0 +1,26 @@
+<h3> <b> Are you sure you want to dispute the invoice?</b></h3>
+<form class="example-form">
+    <mat-form-field class="example-full-width new" appearance="fill">
+      <mat-label>Reason for Dispute*</mat-label>
+      <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
+     </mat-form-field>
+  </form>
+  
+  
+<div mat-dialog-actions>
+
+  <input class="form-control resizing" id="formFileSm" type="file" />
+  
+<div class="example-button-row button">
+    
+    <button mat-flat-button mat-dialog-close  color="warn">Close</button>
+   
+
+    
+   
+    <button mat-flat-button  style="background-color: #ffc003;" (click)="OnClick()" >Submit</button>
+    </div>
+    
+    
+  
+</div>

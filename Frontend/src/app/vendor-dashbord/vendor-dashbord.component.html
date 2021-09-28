@@ -1,0 +1,355 @@
+<mat-toolbar>
+    <button mat-icon-button class="example-icon" (click)="sidenav.toggle();">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Vendor Management</h1>
+    <span class="spacer">{{Name}}
+        <i class="fas fa-user-cog "> </i>
+    </span>
+
+</mat-toolbar>
+
+
+
+<mat-sidenav-container style="height: 100%;">
+    <mat-sidenav #sidenav opened="true" mode="side"
+        style="background-color: #ffce09;; border-radius: 15px 50px 30px 5px;">
+        <mat-nav-list style="width: 200px; ">
+            <div class="sidemenu">
+                <!-- <div class="col-md-12 scrolloff">
+                    <button type="button " routerLinkActive="active" routerLink="/vendorDashbord"
+                        class="btn mb-2 mb-md-0 btn-quarternary btn-block btn-round"><span>Submit Invoice </span>
+                        <div class="icon icon-round d-flex align-items-center justify-content-center">
+                            <i class="fas fa-file-invoice"></i>
+                        </div>
+                    </button>
+                </div> -->
+
+                <div class="col-md-12 scrolloff">
+                    <button type="button" routerLinkActive="active" routerLink="/VendorSubmitedInvoice"
+                        class="btn mb-2 mb-md-0 btn-quarternary btn-block btn-round"><span>Submited</span>
+                        <div class="icon icon-round d-flex align-items-center justify-content-center">
+                            <i class="fas fa-file-invoice"></i>
+                        </div>
+                    </button>
+                </div>
+
+
+            </div>
+            <div class="col-md-12 scroll">
+                <button type="button" (click)="auth.logOut()"
+                    class="btn mb-2 mb-md-0 btn-quarternary btn-block btn-round"><span>LogOut</span>
+                    <div class="icon icon-round d-flex align-items-center justify-content-center">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                </button>
+            </div>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <form autocomplete="off" [formGroup]="data" (ngSubmit)="onSubmit()">
+
+            <div class="content">
+
+                <div class="container">
+                    <h3 style="font-weight: 500; margin: 1%;">Invoice List > Invoice Details </h3>
+
+                    <div class="row align-items-stretch no-gutters contact-wrap changes">
+
+                        <div class="col-md-12  ">
+
+                            <div class="form h-100 ">
+
+
+
+                                <h3 class="color">Invoice Details</h3>
+                                <div class="adjustheight">
+                                    <div class="row display">
+                                        <div class="col-md-3 display ">
+                                            <label class="edit">Invoice No. </label>
+                                            <input type="text" class="form-control inputbox" name="name" id="name"
+                                                placeholder="Invoice No." formControlName="Invoice_number">
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <label class="edit">Generated Date</label>
+                                            <input type="date" class="form-control inputbox" name="email" id="email"
+                                                placeholder="Genrated Date" formControlName="Generated_Date">
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <label class="edit">Contractor Name</label>
+                                            <input type="text" class="form-control inputbox" name="contname"
+                                                id="conname" placeholder="Contractor Name" formControlName="Contractor_Name">
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <label class="edit">Start Date</label>
+                                            <input type="date" class="form-control inputbox" name="strdate" id="strdate"
+                                                placeholder="Start Date" formControlName="Start_Date">
+                                        </div>
+
+                                        <div class="col-md-3 display ">
+                                            <label class="edit">End Date</label>
+                                            <input type="date" class="form-control inputbox" name="enddate" id="enddate"
+                                                placeholder="End Date" formControlName="End_Date">
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <label class="edit">Vendor Name</label>
+                                            <input type="text" class="form-control inputbox" name="vendname"
+                                                id="vendname" placeholder="Vendor Name" formControlName="Vendor_Name">
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <label class="edit">Rate</label>
+                                            <input type="text" class="form-control inputbox" name="rate" id="rate"
+                                                placeholder="Rate" formControlName="Rate">
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <label class="edit">Total Hours Billed</label>
+                                            <input type="text" class="form-control inputbox" name="billed" id="billed"
+                                                placeholder="Total Hours Billed" formControlName="Total_Hours_Billed">
+                                        </div>
+
+                                        <div class="col-md-3 ">
+                                            <label class="edit">Approved Amount</label>
+                                            <input type="text" class="form-control inputbox" name="apramount"
+                                                id="apramount" placeholder="Approved Amount" formControlName="Approved_Amount">
+                                        </div>
+                                    </div>
+                                    <div class="content conttable">
+
+                                        <div class="container">
+
+                                            <div class="row align-items-stretch no-gutters contact-wrap changes">
+                                                <div class="col-md-12  ">
+                                                    <div class="form h-100 ">
+                                                        <form>
+                                                            <h3 class="color2">Billable Hours</h3>
+
+                                                            <!-- inside table -->
+
+                                                            <table class="table table-striped detable">
+
+
+                                                                <tr style="background-color:#7582f77a">
+                                                                    <th scope="col">Date (From)</th>
+                                                                    <th scope="col">Date (To)</th>
+                                                                    <th scope="col">Overtime Hours</th>
+                                                                    <th scope="col">Hours Approved</th>
+                                                                    <th width="150px"><button type="button"
+                                                                            (click)="addSkill()" class="bun">Add
+                                                                            Inputs</button></th>
+
+                                                                </tr>
+                                                             
+                                                                    <tbody class="tbody" formArrayName="Billable_Hours"
+                                                                    *ngFor="let skill of formData.controls; let i = index">
+
+
+                                                                        <tr  [formGroupName]="i">
+
+                                                                            <td><input type="date"
+                                                                                    formControlName="Date_From"
+                                                                                    class="form-control inputbox"
+                                                                                    placeholder="dd-mm-yyyy"></td>
+
+
+                                                                            <td><input type="date"
+                                                                                    formControlName="Date_to"
+                                                                                    class="form-control inputbox"
+                                                                                    placeholder="dd-mm-yyyy"></td> 
+
+                                                                             <td><input type="text"
+                                                                                    formControlName="Overtime"
+                                                                                    class="form-control inputbox"
+                                                                                    placeholder="hours"></td>
+
+                                                                            <td><input type="text"
+                                                                                    formControlName="Hours_Approved"
+                                                                                    class="form-control inputbox"
+                                                                                    placeholder="hoursApproved"></td>  
+                                                                             <td> <button 
+                                                                                    class="bun1">Remove</button>
+                                                                            </td> 
+
+                                                                        </tr>
+
+
+
+
+                                                                    </tbody>
+                                                                
+
+
+
+                                                            </table>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <!--  -->
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            
+                 <div class="content ">
+
+                    <div class="container">
+
+                        <div class="row align-items-stretch no-gutters contact-wrap changes">
+
+                            <div class="col-md-12  container2 ">
+
+                                <div class="form h-100 ">
+                                    <button type="button" (click)="addAdditional()" width="150px" class="bun2">Add
+                                        Inputs</button>
+
+                                    
+
+                                        <h3 class="color">Additional Expenses</h3>
+
+                                        <ng-container>
+                                            <div class="height" formArrayName="Additional_Expenses"
+                                            *ngFor="let newRow of data2.controls; let i = index">
+                                                <div class="row display" [formGroupName]="i" >
+                                                
+                                        
+                                                
+
+                                                    <div class="col-md-3 display ">
+                                                        <label class="edit">Expense Type </label>
+                                                        <input type="text" class="form-control inputbox"
+                                                            placeholder="expense type" formControlName="Expense_Type">
+                                                    </div>
+                                                    <div class="col-md-3 ">
+                                                        <label class="edit">Reimbursement Limit</label>
+                                                        <input type="text" class="form-control inputbox"
+                                                            placeholder="Reimbursement Limit"
+                                                            formControlName="Reimbursement_Limit">
+                                                    </div>
+                                                    <div class="col-md-3 ">
+                                                        <label class="edit">Claimed Amount</label>
+                                                        <input type="text" class="form-control inputbox"
+                                                            placeholder="claimed amount" formControlName="Claimed_Amount">
+                                                    </div>
+                                                    <div class="col-md-3 ">
+                                                        <label class="edit">Approved Amount</label>
+                                                        <input type="text" class="form-control inputbox"
+                                                            placeholder="approved amount" formControlName="Approved_Amount">
+                                                    </div>
+
+                                                    <div class="col-md-3 display ">
+                                                        <label class="edit">Upload Receipt</label>
+                                                        <input type="text" class="form-control inputbox"
+                                                            placeholder="upload receipt" formControlName="Uploaded_Recipt">
+                                                    </div>
+                                                    <div class="col-md-3 ">
+                                                        <label class="edit">Expenses Type</label>
+                                                        <input type="text" class="form-control inputbox"
+                                                            placeholder="expenses type" formControlName="Expenses_type">
+                                                    </div>
+                                                    <div class="col-md-3 ">
+                                                        <label class="edit">Rate/hour</label>
+                                                        <input type="text" class="form-control inputbox"
+                                                            placeholder="rate hour" formControlName="Rateperhour">
+                                                    </div>
+                                                    <div class="col-md-3 ">
+                                                        <label class="edit">Approved OT Hour</label>
+                                                        <input type="text" class="form-control inputbox"
+                                                            placeholder="ot hour" formControlName="Approved_Ot_Hour">
+                                                    </div>
+
+
+                                                    <div class="col-md-3 ">
+                                                        <button  class="bun1" >Remove</button>
+                                                    </div>
+
+
+
+                                                </div>
+                                                
+                                            </div>
+                                        </ng-container>
+
+
+
+
+
+
+                                  
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+ 
+
+            <div class="content ">
+
+                <div class="container">
+
+                    <div class="row align-items-stretch no-gutters contact-wrap changes ">
+
+                        <div class="col-md-12   ">
+
+                            <div class="form h-100  ">
+
+                                <h3 class="color">SubContractor Details</h3>
+                                <div class="height2">
+
+                                    <div class="row display">
+                                        <div class="col-md-3 display ">
+                                            <label class="edit">Skills </label>
+                                            <input type="text" class="form-control inputbox" placeholder="Skills"
+                                                formControlName="Skills">
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <label class="edit">Role/Designation</label>
+                                            <input type="text" class="form-control inputbox" placeholder="Role"
+                                                formControlName="Role">
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <label class="edit">Experience</label>
+                                            <input type="text" class="form-control inputbox" placeholder="Experience"
+                                                formControlName="Experience">
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <label class="edit">Location</label>
+                                            <input type="text" class="form-control inputbox" placeholder="Location"
+                                                formControlName="Location">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="example-button-row button">
+                <button mat-flat-button style="color: black;background-color: #ffce09;" type="submit">Submit</button>
+            </div>
+
+
+ 
+
+        </form>
+    </mat-sidenav-content>
+
+
+
+</mat-sidenav-container>
